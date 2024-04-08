@@ -25,8 +25,7 @@ jobs:
         with: 
           node-version: 16
 
-      - name: "Push on artifact"
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: node-build
           path: ./**
