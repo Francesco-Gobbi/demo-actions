@@ -1,0 +1,32 @@
+name: "build ad push on artifact"
+
+on:
+  push:
+    branches: ["master"]
+  
+  workflow_dispatch:
+
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: "Repository pull"
+        uses: actions/checkout@v2
+
+      - name: "Setup node module"
+        uses: actions/setup-node@v3
+
+      - name: "Install node dependencies"
+        run: npm install
+        with: 
+          node-version: 16
+
+      - name: "Push on artifact"
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-build
+          path: ./**
